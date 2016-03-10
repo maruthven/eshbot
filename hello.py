@@ -9,7 +9,7 @@ def get_search_parameters(term, city):
   params["term"] = term
   params["location"] = city
   params["radius_filter"] = "4000"
-  params["limit"] = "25"
+  params["limit"] = "20"
   params["sort"] = "2"
  
   return params
