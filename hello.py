@@ -10,7 +10,6 @@ def get_search_parameters(term, city):
   params["location"] = city
   params["radius_filter"] = "4000"
   params["limit"] = "20"
-  params["sort"] = "2"
  
   return params
 
@@ -36,7 +35,7 @@ def get_results(params):
    
   return data
 
-locations = ['San Fransisco, CA', 'New York, NY']
+locations = ['San Fransisco, CA', 'New York, NY', 'Austin, TX']
 search = 'ice cream sandwiches'
 api_calls = []
 print 'hello, searching for ' + search
@@ -44,8 +43,12 @@ for loc in locations:
 	print loc
 	params = get_search_parameters(search, loc)
 	out = get_results(params)
-	print out
-	api_calls = api_calls + out
+  for o in out:
+    print o["id"]
+    print o["rating"]
+    print o["snippet_text"]
+
+	api_calls = api_calls + [out]
 	#Be a good internet citizen and rate-limit yourself
 	time.sleep(1.0)
 
